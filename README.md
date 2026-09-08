@@ -1,26 +1,26 @@
-# Speaking Practice App (Flask Version)
+# Speaking Practice App
 
-A web-based speaking practice application built with Flask that helps users improve their speaking skills through interactive exercises with speech recognition and accuracy scoring.
+A modern, elegant web application for practicing speaking skills through interactive exercises with speech recognition and accuracy scoring.
 
 ## Features
 
 - **JSON Import**: Upload custom practice questions and answers via JSON file
-- **Speech Recognition**: Use browser-based Web Speech API to transcribe spoken answers
+- **Speech Recognition**: Browser-based Web Speech API transcribes your spoken answers
 - **Text-to-Speech**: Listen to questions and expected answers using browser TTS
-- **Accuracy Scoring**: Get real-time feedback using Levenshtein distance algorithm
-- **Progress Tracking**: Visual progress bar shows your advancement through questions
+- **Accuracy Scoring**: Real-time feedback using Levenshtein distance algorithm
+- **Progress Tracking**: Visual progress bar shows advancement through questions
 - **Retry Mechanism**: Practice until you achieve 80% or higher accuracy
 - **Keyboard Shortcuts**: Press Spacebar to start speech recognition
-- **Responsive Design**: Works on desktop and mobile browsers
+- **Responsive Design**: Works beautifully on desktop and mobile browsers
+- **Modern UI**: Clean, aesthetic design with smooth animations and accessibility support
 
 ## Project Structure
 
 ```
-Flask/
+/workspace/
 ├── app.py                 # Flask backend application
 ├── requirements.txt       # Python dependencies
 ├── README.md             # This file
-├── sample-data.json      # Sample practice questions
 ├── templates/
 │   └── index.html        # Main HTML template
 └── static/
@@ -38,9 +38,9 @@ Flask/
 
 ## Installation
 
-1. Navigate to the Flask directory:
+1. Navigate to the project directory:
    ```bash
-   cd Flask
+   cd /workspace
    ```
 
 2. Create a virtual environment (recommended):
@@ -79,9 +79,8 @@ Flask/
 
 ### Importing Questions
 
-1. Click **"Import JSON File"** to upload your own practice questions
-2. Or click **"Load Sample Data"** to use the included sample questions
-3. The app will validate your JSON file and show any errors
+1. Click **"Import JSON File"** to upload your practice questions
+2. The app will validate your JSON file and show any errors
 
 ### Practicing
 
@@ -91,7 +90,7 @@ Flask/
 4. Click **"Stop"** when finished, or wait for automatic detection
 5. View your transcribed answer and accuracy score
 6. If accuracy is below 80%, click **"Try Again"** to retry
-7. If accuracy is 80% or higher, click **"Next Question"** to proceed
+7. If accuracy is 80% or higher, click **"Next"** to proceed
 
 ### Text-to-Speech
 
@@ -169,7 +168,7 @@ Your JSON file must be an array of objects, each containing `question` and `answ
 
 1. Speak more clearly and loudly
 2. Check that your microphone is working in other applications
-3. Ensure no other application is独占 (exclusive) use of the microphone
+3. Ensure no other application has exclusive use of the microphone
 
 ### "Microphone Permission Denied"
 
@@ -200,6 +199,27 @@ The app calculates accuracy using the Levenshtein distance algorithm:
 4. Result is rounded to one decimal place
 5. **Pass threshold**: 80% or higher
 
+## Accessibility
+
+This app includes several accessibility features:
+
+- Keyboard navigation support
+- Visible focus states
+- ARIA labels and roles
+- Screen reader announcements
+- High contrast mode support
+- Reduced motion support for users who prefer minimal animations
+
+## Design Features
+
+- Modern, clean aesthetic with Inter font
+- Smooth, subtle animations
+- Soft shadows and rounded corners
+- Gradient accents
+- Responsive layout for all screen sizes
+- Touch-friendly interface
+- Calm color palette for extended practice sessions
+
 ## License
 
 This project is provided as-is for educational purposes.
@@ -210,3 +230,4 @@ Built with:
 - Flask (Python web framework)
 - Web Speech API (Browser speech recognition)
 - Speech Synthesis API (Browser text-to-speech)
+- Inter font (Google Fonts)
