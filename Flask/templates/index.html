@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Speaking Practice App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Import Section -->
+        <div id="import-section" class="card">
+            <h1>Speaking Practice App</h1>
+            <p class="subtitle">Import your practice questions and start speaking!</p>
+            
+            <div class="import-area">
+                <input type="file" id="json-file-input" accept=".json" hidden>
+                <button id="import-btn" class="btn btn-primary">
+                    <span class="btn-icon">📁</span>
+                    Import JSON File
+                </button>
+                <button id="load-sample-btn" class="btn btn-secondary">
+                    <span class="btn-icon">📋</span>
+                    Load Sample Data
+                </button>
+                <p class="hint">Upload a JSON file with questions and answers</p>
+            </div>
+            
+            <div id="import-status" class="status-message"></div>
+        </div>
+        
+        <!-- Practice Section (hidden initially) -->
+        <div id="practice-section" class="card hidden">
+            <!-- Progress Bar -->
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div id="progress-fill" class="progress-fill"></div>
+                </div>
+                <p id="progress-text" class="progress-text">Question 1 of 10</p>
+            </div>
+            
+            <!-- Question Card -->
+            <div class="question-card">
+                <div class="card-header">
+                    <h2>Question</h2>
+                    <button id="listen-question-btn" class="btn-icon-only" title="Listen to question">
+                        🔊
+                    </button>
+                </div>
+                <p id="current-question" class="question-text">What is your name?</p>
+            </div>
+            
+            <!-- Target Answer Card -->
+            <div class="answer-card">
+                <div class="card-header">
+                    <h2>Target Answer</h2>
+                    <button id="listen-answer-btn" class="btn-icon-only" title="Listen to answer">
+                        🔊
+                    </button>
+                </div>
+                <p id="target-answer" class="answer-text">My name is John.</p>
+            </div>
+            
+            <!-- Controls -->
+            <div class="controls">
+                <button id="start-practice-btn" class="btn btn-primary btn-large">
+                    🎯 Start Practice
+                </button>
+                <button id="start-speaking-btn" class="btn btn-success btn-large hidden">
+                    🎤 Start Speaking
+                </button>
+                <button id="stop-btn" class="btn btn-danger btn-large hidden">
+                    ⏹️ Stop
+                </button>
+                <button id="try-again-btn" class="btn btn-warning btn-large hidden">
+                    🔄 Try Again
+                </button>
+                <button id="next-btn" class="btn btn-primary btn-large hidden">
+                    ➡️ Next Question
+                </button>
+            </div>
+            
+            <!-- Loading Indicator -->
+            <div id="loading-indicator" class="loading hidden">
+                <div class="spinner"></div>
+                <p>Listening...</p>
+            </div>
+            
+            <!-- Results Section -->
+            <div id="results-section" class="results hidden">
+                <div class="result-card">
+                    <h3>Your Answer</h3>
+                    <p id="spoken-answer" class="spoken-text"></p>
+                </div>
+                
+                <div class="result-card">
+                    <h3>Expected Answer</h3>
+                    <p id="expected-answer-display" class="expected-text"></p>
+                </div>
+                
+                <div class="accuracy-section">
+                    <h3>Accuracy</h3>
+                    <div id="accuracy-score" class="accuracy-score">--%</div>
+                    <p id="feedback-message" class="feedback-message"></p>
+                </div>
+            </div>
+            
+            <!-- Completion Message -->
+            <div id="completion-section" class="completion hidden">
+                <div class="success-icon">🎉</div>
+                <h2>Congratulations!</h2>
+                <p>You have completed all questions!</p>
+                <button id="restart-btn" class="btn btn-primary">
+                    🔄 Start Over
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
