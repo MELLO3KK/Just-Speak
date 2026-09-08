@@ -15,7 +15,6 @@ const importSection = document.getElementById('import-section');
 const practiceSection = document.getElementById('practice-section');
 const jsonFileInput = document.getElementById('json-file-input');
 const importBtn = document.getElementById('import-btn');
-const loadSampleBtn = document.getElementById('load-sample-btn');
 const importStatus = document.getElementById('import-status');
 const startPracticeBtn = document.getElementById('start-practice-btn');
 const startSpeakingBtn = document.getElementById('start-speaking-btn');
@@ -116,10 +115,19 @@ function handleSpeechError(error) {
             errorMessage = 'An error occurred during speech recognition.';
     }
     
-    alert(errorMessage);
+    // Show error in the results section instead of alert
+    showInlineMessage(errorMessage, 'error');
     hideLoading();
     startSpeakingBtn.classList.remove('hidden');
     stopBtn.classList.add('hidden');
+}
+
+/**
+ * Show inline message in results section
+ */
+function showInlineMessage(message, type) {
+    feedbackMessageEl.textContent = message;
+    feedbackMessageEl.className = `feedback-message ${type}`;
 }
 
 /**
@@ -146,9 +154,6 @@ function setupEventListeners() {
     
     // File input change
     jsonFileInput.addEventListener('change', handleFileSelect);
-    
-    // Load sample data button
-    loadSampleBtn.addEventListener('click', loadSampleData);
     
     // Start practice button
     startPracticeBtn.addEventListener('click', startPractice);
@@ -233,24 +238,6 @@ async function uploadJsonFile(file) {
         }
     } catch (error) {
         handleImportError('Failed to connect to server. Please try again.');
-    }
-}
-
-/**
- * Load sample data from server
- */
-async function loadSampleData() {
-    try {
-        const response = await fetch('/api/sample-data');
-        const result = await response.json();
-        
-        if (result.success) {
-            handleImportSuccess(result.data);
-        } else {
-            handleImportError(result.error);
-        }
-    } catch (error) {
-        handleImportError('Failed to load sample data. Please try again.');
     }
 }
 
